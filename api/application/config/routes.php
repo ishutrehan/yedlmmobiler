@@ -55,4 +55,7 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['/user/register']['POST'] = 'User/register';
 $route['/user/login']['POST'] = 'User/login';
+$route['/user/update/(:num)']['POST'] = 'User/update';
+$route['/user/update/password/(:num)']['POST'] = 'User/changepassword';
+$route['/property/add']['POST'] = 'Property/add';
 
