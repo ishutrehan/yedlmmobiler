@@ -8,52 +8,28 @@ class AdminModel extends CI_Model {
 		$this->table_users = 'users';
 		$this->table_properties = 'properties_listing';
 	}
-	//insert user
-	public function insert($data = array())
+	//get all users
+	public function getAllUsers()
+	{
+		$this->db->select("*");
+		$this->db->from($this->table_users);
+		$query = $this->db->get();     
+		return $query->result();
+		
+	}
+	
+	//add new user
+	public function addNewUser($data = array())
 	{
 		$response = [];
-		$insert = $this->db->insert($this->table_name, $data);
-		if($insert){
-			$response = [
-				'success' => true,
-				'data' => $this->getUserByID($this->db->insert_id())
-			];
-			echo json_encode($response);
-		}
-	}
-	//update user profile
-	public function update($data = array(), $user_id)
-	{
-		$response = [];		
-		$this->db->where($this->primary_key, $user_id);
-		$update = $this->db->update($this->table_name, $data);
-		if($update){
-			$response = [
-				'success' => true,
-				'data' => $this->getUserByID($user_id)
-			];
-			echo json_encode($response);
-		}		
-	}
-	public function updatePassword($data = array(), $user_id)
-	{
-		$response = [];		
-		$this->db->where($this->primary_key, $user_id);
-		$update = $this->db->update($this->table_name, $data);
-		if($update){
-			$response = [
-				'success' => true,
-				'data' => $this->getUserByID($user_id)
-			];
-			echo json_encode($response);
-		}		
+		$this->db->insert($this->table_users, $data);
 	}
 	//get user by id
 	public function getUserByID($id = null)
 	{
 		if($id){
-			$this->db->where($this->primary_key, $id);
-			$q = $this->db->get($this->table_name);
+			$this->db->where('id', $id);
+			$q = $this->db->get($this->table_users);
 			$data = $q->result_array();
 			return $data;
 		}
@@ -63,21 +39,68 @@ class AdminModel extends CI_Model {
 	{
 		if($email){
 			$this->db->where('email', $email);
-			$q = $this->db->get($this->table_name);
+			$q = $this->db->get($this->table_users);
 			$data = $q->result_array();
 			return $data;
 		}
 	}
 
+	public function deleteUserByID($id = null)
+	{
+		if($id){
+			$this->db->where('id', $id);
+			$delete = $this->db->delete($this->table_users);
+			if($delete){
+				echo true;
+			}else{
+				echo false;
+			}			
+		}
+	}
+
 	//get user by email and password
-	public function getUserByEmailandPassword($email = null, $password = null)
+	public function getAdmin($email = null, $password = null, $role = "admin")
 	{
 		if($email && $password){
 			$this->db->where('email', $email);
 			$this->db->where('password', $password);
-			$q = $this->db->get($this->table_name);
+			$this->db->where('role', $role);
+			$q = $this->db->get($this->table_users);
 			$data = $q->result_array();
 			return $data;
+		}
+	}
+	
+	//get all properties
+	public function getAllProperties()
+	{
+		$this->db->select("*");
+		$this->db->from($this->table_properties);
+		$query = $this->db->get();     
+		return $query->result();
+		
+	}
+	
+	//get property by id
+	public function getPropertyByID($id = null)
+	{
+		if($id){
+			$this->db->where('id', $id);
+			$q = $this->db->get($this->table_properties);
+			$data = $q->result_array();
+			return $data;
+		}
+	}
+	public function deletePropertyByID($id = null)
+	{
+		if($id){
+			$this->db->where('id', $id);
+			$delete = $this->db->delete($this->table_properties);
+			if($delete){
+				echo true;
+			}else{
+				echo false;
+			}			
 		}
 	}
 }

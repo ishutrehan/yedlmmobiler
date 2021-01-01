@@ -4968,3 +4968,27 @@ ul.notifications {
 
 .calendar-exibit .calendar-table {
   padding: 0 0 4px 0; }
+
+table.all-users-table .fa-trash {
+ font-size: 20px;
+ color: #ff0000;
+}
+
+table.all-users-table .fa-eye {
+ font-size: 20px;
+}
+.profile_details .profile_view{
+  display: block;
+  float: left;
+  width:100%;
+}
+.well{
+  box-shadow: none !important;
+  border: 0;
+  float:left;
+  width:100%;
+}
+#datatable_wrapper li.paginate_button.active a{
+  background-color: #212529 !important;
+  color: #fff;
+}

@@ -53,9 +53,14 @@ $route['default_controller'] = 'AdminController';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-/*$route['/user/register']['POST'] = 'User/register';
-$route['/user/login']['POST'] = 'User/login';
-$route['/user/update/(:num)']['POST'] = 'User/update';
-$route['/user/update/password/(:num)']['POST'] = 'User/changepassword';
-$route['/property/add']['POST'] = 'Property/add';*/
+$route['users'] = 'AdminController/allUsers';
+$route['add-user'] = 'AdminController/addUser';
+$route['login'] = 'AdminController/login';
+$route['logout'] = 'AdminController/logout';
+$route['getuserprofile']['POST'] = 'AdminController/getUser';
+$route['deleteuserprofile']['POST'] = 'AdminController/deleteUser';
+
+$route['properties'] = 'AdminController/allProperties';
+$route['getproperty']['POST'] = 'AdminController/getProperty';
+$route['deleteproperty']['POST'] = 'AdminController/deleteProperty';
 

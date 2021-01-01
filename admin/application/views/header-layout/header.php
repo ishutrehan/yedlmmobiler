@@ -14,20 +14,30 @@
     <link href="<?php echo base_url('assets/vendors/nprogress/nprogress.css') ?>" rel="stylesheet">
     <!-- iCheck -->
     <link href="<?php echo base_url('assets/vendors/iCheck/skins/flat/green.css') ?>" rel="stylesheet">
-	
+	<?php /*
     <!-- bootstrap-progressbar -->
     <link href="<?php echo base_url('assets/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css') ?>" rel="stylesheet">
     <!-- JQVMap -->
     <link href="<?php echo base_url('assets/vendors/jqvmap/dist/jqvmap.min.css') ?>" rel="stylesheet"/>
     <!-- bootstrap-daterangepicker -->
     <link href="<?php echo base_url('assets/vendors/bootstrap-daterangepicker/daterangepicker.css') ?>" rel="stylesheet">
-
+*/?>
+    <!-- Datatables -->
+    
+    <link href="<?php echo base_url('assets/vendors/datatables.net-bs/css/dataTables.bootstrap.min.css'); ?>" rel="stylesheet">
+    <link href="<?php echo base_url('assets/vendors/datatables.net-fixedheader-bs/css/fixedHeader.bootstrap.min.css'); ?>" rel="stylesheet">
+    <link href="<?php echo base_url('assets/vendors/datatables.net-responsive-bs/css/responsive.bootstrap.min.css'); ?>" rel="stylesheet">
+    <link href="<?php echo base_url('assets/vendors/datatables.net-scroller-bs/css/scroller.bootstrap.min.css'); ?>" rel="stylesheet">
     <!-- Custom Theme Style -->
-    <link href="<?php echo base_url('assets/build/css/custom.min.css') ?>" rel="stylesheet">
-
+    <link href="<?php echo base_url('assets/build/css/custom.css') ?>" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
+    
+    <script>
+        var BASE_URL = '<?php echo base_url(); ?>';
+    </script>
 	
 </head>
-<body class="nav-md">
+<body class="nav-md footer_fixed">
     <div class="container body">
       <div class="main_container">
         <?php $this->load->view('sidebar-layout/sidebar'); ?>
