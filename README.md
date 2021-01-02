@@ -35,7 +35,7 @@ Required Parameters
 "password": ""
 ```
 
-**Load All Properties**
+**Load All Properties and Search Properties**
 ```
 /api/property/search/
 ```
