@@ -28,6 +28,18 @@ class Property extends CI_Controller {
         }
     }
 
+    //search properties 
+	public function search()
+	{
+        $errors = [];
+        
+		if(isset($_POST)){
+            $this->PropertyModel->search($_POST);			
+        }else{
+            $this->PropertyModel->search();
+        }
+    }
+
 }
 
 ?>
