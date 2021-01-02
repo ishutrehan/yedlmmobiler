@@ -2,13 +2,15 @@
 <div class="col-md-3 left_col menu_fixed">
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
-            <a href="<?php echo base_url(); ?>" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
+            <a href="<?php echo base_url(); ?>" class="site_title" style="height:75px; padding-left:0;">
+                <img src="<?php echo base_url('assets/images/logo-white.png'); ?>" alt="Logo" width="100%">
+            </a>
         </div>
 
         <div class="clearfix"></div>
 
         <!-- menu profile quick info -->
-        <div class="profile clearfix">
+        <div class="profile clearfix" style="margin-top: 16px;">
             <div class="profile_pic">
             <img src="<?php echo base_url('assets/uploads/profiles/'.$loggedinuser[0]['profile_image']); ?>" alt="..." class="img-circle profile_img">
             </div>

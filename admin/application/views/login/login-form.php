@@ -51,8 +51,9 @@
                     <div class="clearfix"></div>
                     <br />
                     <div>
-                    <h1><i class="fa fa-paw"></i> Gentelella Alela!</h1>
-                    <p>©2016 All Rights Reserved. Gentelella Alela! is a Bootstrap 3 template. Privacy and Terms</p>
+                    <img src="<?php echo base_url('assets/images/logo-black.png'); ?>" alt="Logo" width="50%">
+                    <br />
+                    <p style="margin-top:15px;">©2020 All Rights Reserved.</p>
                     </div>
                 </div>
                 </form>
