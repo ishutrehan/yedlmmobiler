@@ -35,6 +35,26 @@ Required Parameters
 "password": ""
 ```
 
+**Load All Properties**
+```
+/api/property/search/
+```
+For Filter Type use below parameter  
+```
+type: "string"
+```
+For Filter price use below parameters 
+```
+price_min: "number"
+price_max: "number"
+```
+For Filter bedrooms use below parameters 
+```
+bedroom_min: "number"
+bedroom_max: "number"
+```
+
+
 **Property Add**
 ```
 /api/property/add/ (POST)
