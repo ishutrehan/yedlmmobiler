@@ -69,6 +69,7 @@ Required Parameters
 "number_of_bathrooms": "1",
 "location": "",
 "type": "appartment",
+"listed_by": (current user id)
 "amenities": "pool,wi-fi, garden" (comma separated)
 ```
 
