@@ -2524,7 +2524,8 @@ function init_DataTables() {
 
     $('#datatable').dataTable({
         'pageLength' : 5,
-        "lengthMenu": [5, 10, 25, 50]
+        "lengthMenu": [5, 10, 25, 50],
+        "order": [[ 0, "desc" ]]
     });
 
     $('#datatable-keytable').DataTable({
@@ -5104,7 +5105,7 @@ $(document).ready(function () {
                             beforeSend: function(){
                                 $(this).parents('tr').css('opacity', 0.5);
                             },
-                            success: function(){
+                            success: function(response){
                                 window.location.reload();
                             }
                         })
@@ -5115,6 +5116,25 @@ $(document).ready(function () {
                 }
             }
         });       
+    });
+    //Approve user profile ajax request
+    jQuery(document).on('ifChanged', '.approve_user', function(){
+        var status = 'pending';
+        if($(this).is(":checked")) {
+            status = 'approved';
+        }
+        var user_id = jQuery(this).data('id');
+        jQuery.ajax({
+            type: "POST",
+            url: BASE_URL + "approveuserprofile",
+            data: {
+                id : user_id,
+                status: status
+            },
+            success: function(response){
+                
+            }
+        }) 
     });
     //view property ajax request
     jQuery(document).on('click', '.view-property', function(){

@@ -59,6 +59,7 @@ $route['login'] = 'AdminController/login';
 $route['logout'] = 'AdminController/logout';
 $route['getuserprofile']['POST'] = 'AdminController/getUser';
 $route['deleteuserprofile']['POST'] = 'AdminController/deleteUser';
+$route['approveuserprofile']['POST'] = 'AdminController/approveUser';
 
 $route['properties'] = 'AdminController/allProperties';
 $route['getproperty']['POST'] = 'AdminController/getProperty';

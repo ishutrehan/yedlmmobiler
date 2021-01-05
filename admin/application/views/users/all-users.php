@@ -33,26 +33,33 @@
                                         <th>Email</th>
                                         <th>Phone</th>
                                         <th>Role</th>
+                                        <th>Approve User</th>
                                         <th>Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php if($usersList){ 
+                                        <?php 
+                                        if($usersList){ 
                                             foreach ($usersList as $user) { ?>
-                                            <tr>
-                                                <td><?php echo $user->id; ?></td>
-                                                <td><?php echo $user->name; ?></td>
-                                                <td><?php echo $user->email; ?></td>
-                                                <td><?php echo $user->phone;  ?></td>
-                                                <td><?php echo ucfirst($user->role); ?></td>
-                                                <td>
-                                                    <a href="javascript:void(0)" class="view-user" data-id="<?php echo $user->id; ?>">
-                                                        <i class="fa fa-eye" data-toggle="tooltip" data-placement="top" title="" data-original-title="View"></i></a>
-                                                    &nbsp;&nbsp;
-                                                    <a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete" data-id="<?php echo $user->id; ?>" class="delete-user"><i class="fa fa-trash"></i></a>
-                                                </td>
-                                            </tr>
-                                        <?php } } ?>
+                                                <tr>
+                                                    <td><?php echo $user->id; ?></td>
+                                                    <td><?php echo $user->name; ?></td>
+                                                    <td><?php echo $user->email; ?></td>
+                                                    <td><?php echo $user->phone;  ?></td>
+                                                    <td><?php echo ucfirst($user->role); ?></td>                                                
+                                                    <td>
+                                                        <input type="checkbox" class="flat approve_user" data-id="<?php echo $user->id; ?>" <?php if($user->status == 'approved'){ echo "checked"; } ?>/>
+                                                    </td>
+                                                    <td>
+                                                        <a href="javascript:void(0)" class="view-user" data-id="<?php echo $user->id; ?>">
+                                                            <i class="fa fa-eye" data-toggle="tooltip" data-placement="top" data-original-title="View"></i></a>
+                                                        &nbsp;&nbsp;
+                                                        <a href="javascript:void(0)" data-toggle="tooltip" data-placement="top" data-original-title="Delete" data-id="<?php echo $user->id; ?>" class="delete-user"><i class="fa fa-trash"></i></a>
+                                                    </td>
+                                                </tr>
+                                             <?php
+                                            } 
+                                        } ?>
                                     </tbody>
                                 </table>
                             </div>

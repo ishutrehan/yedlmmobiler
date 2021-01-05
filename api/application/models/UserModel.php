@@ -14,10 +14,20 @@ class UserModel extends CI_Model {
 		$response = [];
 		$insert = $this->db->insert($this->table_name, $data);
 		if($insert){
-			$response = [
-				'success' => true,
-				'data' => $this->getUserByID($this->db->insert_id())
-			];
+			if($data['role'] == 'individual'){
+				$response = [
+					'success' => true,
+					'status' => 'pending',
+					'data' => $this->getUserByID($this->db->insert_id())
+				];
+			}else{
+				$response = [
+					'success' => true,
+					'status' => 'approved',
+					'data' => $this->getUserByID($this->db->insert_id())
+				];
+			}
+			
 			echo json_encode($response);
 		}
 	}

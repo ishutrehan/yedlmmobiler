@@ -13,6 +13,7 @@ class AdminModel extends CI_Model {
 	{
 		$this->db->select("*");
 		$this->db->from($this->table_users);
+		$this->db->order_by("id", "desc");
 		$query = $this->db->get();     
 		return $query->result();
 		
@@ -55,6 +56,18 @@ class AdminModel extends CI_Model {
 			}else{
 				echo false;
 			}			
+		}
+	}
+	public function approveUserByID($data = array())
+	{
+		if($data){
+			$this->db->where('id', $data['id']);
+			$update = $this->db->update($this->table_users, array('status' => $data['status']));
+			if($update){
+				echo json_encode(['success' => true]);
+			}else{
+				echo json_encode(['success' => false]);
+			}		
 		}
 	}
 

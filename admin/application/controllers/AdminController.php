@@ -55,7 +55,6 @@ class AdminController extends CI_Controller {
 		if($this->session->userdata('userdata')){
 			$data['loggedinuser'] = $this->session->userdata('userdata');
 			$data['usersList'] = $this->AdminModel->getAllUsers();
-			
 			return $this->load->view('users/all-users', $data);
 		}else{
 			return $this->load->view('login/login-form');
@@ -113,6 +112,7 @@ class AdminController extends CI_Controller {
 			
 			if(empty($errors)){
 				$_POST['password'] = md5($_POST['password']);
+				$_POST['status'] = 'approved';				
 				unset($_POST['add-user-form']);
 				$addUser = $this->AdminModel->addNewUser($_POST);
 				redirect(base_url().'add-user?success=true');
@@ -155,6 +155,11 @@ class AdminController extends CI_Controller {
 		if(isset($_POST)){
 			$this->AdminModel->deleteUserByID($_POST['id'])[0];
 		
+		}
+	}	
+	public function approveUser(){
+		if(isset($_POST)){
+			$this->AdminModel->approveUserByID($_POST);		
 		}
 	}	
 	
