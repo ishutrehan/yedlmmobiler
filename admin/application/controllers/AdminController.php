@@ -203,5 +203,13 @@ class AdminController extends CI_Controller {
 			$this->AdminModel->deletePropertyByID($_POST['id'])[0];		
 		}
 	}
+	public function getNotifications(){
+		$notifications = $this->AdminModel->getnotifications();	
+		echo json_encode(["totalResults"=> count($notifications), "notifications" => $notifications]);
+	}
+	public function allNotifications(){
+		$data['notifications'] = $this->AdminModel->getallnotifications();	
+		return $this->load->view('notifications', $data);
+	}
 }
 ?>

@@ -57,6 +57,14 @@ class User extends CI_Controller {
 					$_POST['status'] = 'pending';
 				}
 				$_POST['password'] = md5($_POST['password']);
+
+				$notificationData = [
+					"message" => "New  ".$_POST['role']." user ".$_POST['name']." has been registered!",
+					'type' => 'new_user',
+					'receiver' => 'admin',
+					'sender' => 'system'
+				];
+				$this->UserModel->notification($notificationData); // create notification for admin
 				$this->UserModel->insert($_POST);
 			}else{
 				echo json_encode($errors);

@@ -15,6 +15,22 @@
             <a class="dropdown-item"  href="<?php echo base_url('logout'); ?>"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
           </div>
         </li>
+        <li role="presentation" class="nav-item dropdown open">
+          <a href="javascript:;" class="dropdown-toggle info-number" id="navbarDropdown1" data-toggle="dropdown" aria-expanded="false">
+            <i class="fa fa-envelope-o"></i>
+            <span class="badge bg-green noti_count">0</span>
+          </a>
+          <ul class="dropdown-menu list-unstyled msg_list" role="menu" aria-labelledby="navbarDropdown1">
+            <li class="nav-item">
+              <div class="text-center">
+                <a class="dropdown-item">
+                  <strong>See All Alerts</strong>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </li>
       </ul>
     </nav>
   </div>

@@ -45,10 +45,11 @@
 <script src="<?php echo base_url('assets/vendors/jqvmap/dist/maps/jquery.vmap.world.js'); ?>"></script>
 <script src="<?php echo base_url('assets/vendors/jqvmap/examples/js/jquery.vmap.sampledata.js'); ?>"></script>
 <!-- bootstrap-daterangepicker -->
-<script src="<?php echo base_url('assets/vendors/moment/min/moment.min.js'); ?>"></script>
 <script src="<?php echo base_url('assets/vendors/bootstrap-daterangepicker/daterangepicker.js'); ?>"></script>
 */
+
 ?>
+<script src="<?php echo base_url('assets/vendors/moment/min/moment.min.js'); ?>"></script>
 <!-- Datatables -->
 <script src="<?php echo base_url('assets/vendors/datatables.net/js/jquery.dataTables.min.js'); ?>"></script>
 <script src="<?php echo base_url('assets/vendors/datatables.net-bs/js/dataTables.bootstrap.min.js'); ?>"></script>

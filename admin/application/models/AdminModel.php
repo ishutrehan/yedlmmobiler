@@ -7,6 +7,7 @@ class AdminModel extends CI_Model {
 		parent::__construct();
 		$this->table_users = 'users';
 		$this->table_properties = 'properties_listing';
+		$this->table_notifications = 'notifications';
 	}
 	//get all users
 	public function getAllUsers()
@@ -115,6 +116,22 @@ class AdminModel extends CI_Model {
 				echo false;
 			}			
 		}
+	}
+	//get latest 4 notifications
+	public function getnotifications()
+	{
+		$this->db->select("*");
+		$this->db->from($this->table_notifications);
+		$this->db->where('receiver', 'admin')->where('status', 'unread')->order_by('id', 'desc')->limit(4);
+		return $this->db->get()->result_array();   
+	}
+	//get all notifications
+	public function getallnotifications()
+	{
+		$this->db->select("*");
+		$this->db->from($this->table_notifications);
+		$this->db->where('receiver', 'admin')->order_by('id', 'desc');
+		return $this->db->get()->result_array();   
 	}
 }
 

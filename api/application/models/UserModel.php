@@ -7,6 +7,7 @@ class UserModel extends CI_Model {
 		parent::__construct();
 		$this->table_name = 'users';
 		$this->primary_key = 'id';
+		$this->table_notifications = 'notifications';
 	}
 	//insert user
 	public function insert($data = array())
@@ -89,6 +90,10 @@ class UserModel extends CI_Model {
 			$data = $q->result_array();
 			return $data;
 		}
+	}
+	public function notification($data = array())
+	{
+		$this->db->insert($this->table_notifications, $data);
 	}
 }
 

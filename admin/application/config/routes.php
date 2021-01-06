@@ -65,3 +65,8 @@ $route['properties'] = 'AdminController/allProperties';
 $route['getproperty']['POST'] = 'AdminController/getProperty';
 $route['deleteproperty']['POST'] = 'AdminController/deleteProperty';
 
+$route['getnotifications']['GET'] = 'AdminController/getNotifications';
+$route['notifications'] = 'AdminController/allNotifications';
+
+
+

@@ -4999,7 +4999,6 @@ function init_echarts() {
     }
 
 }
-
 /* Get the element you want displayed in fullscreen */ 
 var elem = document.documentElement;
 /* Function to open fullscreen mode */
@@ -5014,6 +5013,29 @@ function openFullscreen() {
     elem = window.top.document.body; //To break out of frame in IE
     elem.msRequestFullscreen();
     }
+}
+
+function loadNotifications(){
+    jQuery.ajax({
+        type: "GET",
+        url: BASE_URL + "getnotifications",
+        beforeSend: function(){                
+            jQuery(document).find('ul.msg_list .messagesList').remove();
+        },
+        success: function(response){
+            var html = '';
+            var res = JSON.parse(response);
+            if(res.notifications.length > 0){
+                jQuery.each(res.notifications, function( key, value ) {
+                    var messageDate = moment(value.created_at).fromNow();
+                    
+                    html += '<li class="nav-item messagesList"><a class="dropdown-item"><span class="image"></span><span><span>&nbsp;</span><span class="time timeago">'+messageDate+'</span></span><span class="message">'+value.message+'</span></a></li>';
+                });
+            }
+            jQuery(document).find('span.noti_count').text(res.totalResults);
+            jQuery(document).find('ul.msg_list').prepend(html);
+        }
+    }); 
 }
 $(document).ready(function () {
 
@@ -5184,7 +5206,12 @@ $(document).ready(function () {
 
                 }
             }
-        });       
+        });              
     });
-
+    loadNotifications();
+    //get notifications
+    setInterval(function(){
+        loadNotifications();
+    }, 5000);
+    
 });	
