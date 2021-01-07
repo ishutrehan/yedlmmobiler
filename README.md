@@ -63,7 +63,7 @@ Required Parameters
 ```
 "title": "This is a testing Property",
 "description": "This is a description",
-"image": "test.jpg",
+"image": "",
 "price": "200",
 "number_of_bedrooms": "2",
 "number_of_bathrooms": "1",
