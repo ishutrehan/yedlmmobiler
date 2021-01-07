@@ -131,19 +131,20 @@ class AdminController extends CI_Controller {
 	}
 	public function getUser(){
 		if(isset($_POST)){
-			$user = (object)$this->AdminModel->getUserByID($_POST['id'])[0];
-		
+			$user = (object)$this->AdminModel->getUserByID($_POST['id'])[0];		
 			$image_url = $user->profile_image ? base_url('assets/uploads/profiles/'. $user->profile_image) : base_url('assets/images/user.png') ;
 			 echo '<div class="well profile_view">
 			 <div class="col-sm-12">
-				 <div class="left col-sm-7">
+				 <div class="left col-sm-8">
 					 <h2>'.$user->name .'</h2>
 					 <ul class="list-unstyled">
+						 <li><i class="fa fa-user"></i> Role : '.ucfirst($user->role) .'</li>
 						 <li><i class="fa fa-phone"></i> Phone : '.$user->phone .'</li>
 						 <li><i class="fa fa-envelope"></i> Email : '.$user->email .'</li>
+						 <li><i class="fa fa-building"></i> Total Properties : '.$user->total_properties .'</li>
 					 </ul>
 				 </div>
-				 <div class="right col-sm-5 text-center">
+				 <div class="right col-sm-4 text-center">
 					 <img src="'.$image_url.'" alt="" class="img-circle img-fluid">
 				 </div>
 			 </div>
@@ -180,17 +181,17 @@ class AdminController extends CI_Controller {
 			$image_url = $property->image ? base_url('assets/uploads/properties/'. $property->image) : base_url('assets/images/user.png') ;
 			 echo '<div>
 			 <div class="col-md-12">
-				 <div class="left col-md-7">
+				 <div class="left col-md-8">
 					 <h2>'.$property->title .'</h2>
 					 <label><b>Description:</b></label>
 					 <p>'.$property->description .'</p>
 					 <ul class="list-unstyled">
-						 <li><b>Listed By :</b> '.ucfirst($property->listed_by) .'</li>
+						 <li><b>Listed By :</b> '.ucfirst($property->listedByName) . ' ('.ucfirst($property->userRole).') </li>
 						 <li><b>Price :</b> $'.$property->price .'</li>
 						 <li><b>Type :</b> '.ucfirst($property->type) .'</li>
 					 </ul>
 				 </div>
-				 <div class="right col-md-5 text-center">
+				 <div class="right col-md-4 text-center">
 					 <img src="'.$image_url.'" alt="" class="img-fluid">
 				 </div>
 			 </div>

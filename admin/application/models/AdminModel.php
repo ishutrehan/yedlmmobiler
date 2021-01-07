@@ -30,8 +30,11 @@ class AdminModel extends CI_Model {
 	public function getUserByID($id = null)
 	{
 		if($id){
-			$this->db->where('id', $id);
-			$q = $this->db->get($this->table_users);
+			$this->db->select($this->table_users.'.*, COUNT('.$this->table_properties.'.listed_by) as total_properties');
+			$this->db->from($this->table_users);
+			$this->db->where($this->table_users.'.id', $id);
+			$this->db->join($this->table_properties, $this->table_users.'.id = '.$this->table_properties .'.listed_by', 'LEFT')->group_by('listed_by');
+			$q = $this->db->get();
 			$data = $q->result_array();
 			return $data;
 		}
@@ -88,8 +91,9 @@ class AdminModel extends CI_Model {
 	//get all properties
 	public function getAllProperties()
 	{
-		$this->db->select("*");
+		$this->db->select($this->table_properties.".*, ".$this->table_users.".name as listedByName, ".$this->table_users.".role as userRole");
 		$this->db->from($this->table_properties);
+		$this->db->join($this->table_users, $this->table_properties.'.listed_by = '.$this->table_users .'.id', 'LEFT');
 		$query = $this->db->get();     
 		return $query->result();
 		
@@ -99,8 +103,11 @@ class AdminModel extends CI_Model {
 	public function getPropertyByID($id = null)
 	{
 		if($id){
-			$this->db->where('id', $id);
-			$q = $this->db->get($this->table_properties);
+			$this->db->select($this->table_properties.'.*, '.$this->table_users.'.name as listedByName, '.$this->table_users.'.role as userRole');
+			$this->db->from($this->table_properties);
+			$this->db->where($this->table_properties.'.id', $id);
+			$this->db->join($this->table_users, $this->table_properties.'.listed_by = '.$this->table_users .'.id', 'LEFT');
+			$q = $this->db->get();
 			$data = $q->result_array();
 			return $data;
 		}
