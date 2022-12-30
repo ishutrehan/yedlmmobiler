@@ -8,11 +8,21 @@
       <ul class=" navbar-right">
         <li class="nav-item dropdown open" style="padding-left: 15px;">
           <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-            <img src="<?php echo base_url('assets/uploads/profiles/'.$loggedinuser[0]['profile_image']); ?>" alt=""><?php echo $loggedinuser[0]['name']; ?>
+            
+              <?php 
+                  $profile_url  = '';
+                  if(file_exists(UPLOADS_URL."profiles/".$loggedinuser[0]['profile_image'])){
+                      $profile_url = UPLOADS_URL."profiles/".$loggedinuser[0]['profile_image'];
+                  }else{
+                      $profile_url = AWS_PROFILES_URL.$loggedinuser[0]['profile_image'];
+                  }
+
+              ?>
+            <img src="<?php echo $profile_url; ?>" alt=""><?php echo $loggedinuser[0]['name']; ?>
           </a>
           <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item"  href="javascript:;"> Profile</a>                     
-            <a class="dropdown-item"  href="<?php echo base_url('logout'); ?>"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+            <a class="dropdown-item"  href="<?php echo base_url('profile'); ?>"> <?php echo PROFILE; ?></a>                     
+            <a class="dropdown-item"  href="<?php echo base_url('logout'); ?>"><i class="fa fa-sign-out pull-right"></i> <?php echo LOG_OUT; ?></a>
           </div>
         </li>
         <li role="presentation" class="nav-item dropdown open">
@@ -24,7 +34,7 @@
             <li class="nav-item">
               <div class="text-center">
                 <a class="dropdown-item">
-                  <strong>See All Alerts</strong>
+                  <strong><?php echo SEE_ALL_ALERTS; ?></strong>
                   <i class="fa fa-angle-right"></i>
                 </a>
               </div>

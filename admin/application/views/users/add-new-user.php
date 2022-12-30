@@ -5,7 +5,7 @@
     <div class="">
         <div class="page-title">
             <div class="title_left">
-                <h3>Add New User</h3>
+                <h3><?php echo ADD_NEW_USER; ?></h3>
             </div>
         </div>
         <div class="clearfix"></div>
@@ -14,7 +14,7 @@
             <div class="col-md-12 col-sm-12 ">
                 <div class="x_panel">
                     <div class="x_title">
-                    <h2><small>Add new user</small></h2>
+                    <h2><small><?php echo ADD_NEW_USER; ?></small></h2>
                     <ul class="nav navbar-right pull-right">
                         <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                         </li>
@@ -54,7 +54,7 @@
                         </div>
                         
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="name">Profile Image <span class="required">*</span>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="name"><?php echo PROFILE_IMAGE; ?> <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 ">
                                 <input type="file" id="profile_image" name="profile_image" />
@@ -62,28 +62,28 @@
                             </div>
                         </div>
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name">Full Name <span class="required">*</span>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="first-name"><?php echo FULL_NAME; ?> <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 ">
                                 <input type="text" id="name" name="name" required="required" class="form-control ">
                             </div>
                         </div>
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="email">Email Address <span class="required">*</span>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="email"><?php echo EMAIL_ADDRESS; ?> <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 ">
                                 <input type="email" id="email" name="email" required="required" class="form-control ">
                             </div>
                         </div>
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="password">Password <span class="required">*</span>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="password"><?php echo PASSWORD; ?> <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 ">
                                 <input type="password" id="password" name="password" required="required" class="form-control ">
                             </div>
                         </div>
                         <div class="item form-group">
-                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="phone">Phone <span class="required">*</span>
+                            <label class="col-form-label col-md-3 col-sm-3 label-align" for="phone"><?php echo PHONE; ?> <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 ">
                                 <input type="phone" id="phone" name="phone" required="required" class="form-control ">
@@ -93,7 +93,7 @@
                         <div class="ln_solid"></div>
                         <div class="item form-group">
                             <div class="col-md-6 col-sm-6 offset-md-3">
-                                <button type="submit" name="add-user-form" class="btn btn-success">Add User</button>
+                                <button type="submit" name="add-user-form" class="btn btn-success"><?php echo ADD_USER; ?></button>
                             </div>
                         </div>
 

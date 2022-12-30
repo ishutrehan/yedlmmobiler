@@ -211,61 +211,65 @@ $(document).ready(function () {
             });
         });
     }
+    // Table
+    jQuery(document).on('ifChanged', 'table input', function () {
+        checkState = '';
+        if($(this).is(':checked')){
+            $(this).parent().parent().parent().addClass('selected');
+        }else{
+             $(this).parent().parent().parent().removeClass('selected');
+           
+        }
+        countChecked();
+        
+    });
+
+    var checkState = '';
+
+    jQuery(document).on('ifChanged', '.bulk_action input', function () {  
+        checkState = '';
+        if($(this).is(':checked')){
+            $(this).parent().parent().parent().addClass('selected');
+        }else{
+            $(this).parent().parent().parent().removeClass('selected');
+            
+        }
+        countChecked();
+        
+    });
+    jQuery(document).on('ifChanged', '.bulk_action input#check-all', function () {   
+        if($(this).is(':checked')){
+            checkState = 'all';
+            
+        }else{
+            checkState = 'none';
+        }
+        countChecked();
+    });
+
+    function countChecked() {
+        if (checkState === 'all') {
+            $(".bulk_action input[name='table_records']").iCheck('check');
+        }
+        if (checkState === 'none') {
+            $(".bulk_action input[name='table_records']").iCheck('uncheck');
+        }
+
+        var checkCount = $(".bulk_action input[name='table_records']:checked").length;
+
+        if (checkCount) {
+            $('.column-title').hide();
+            $('.bulk-actions').show();
+            $('.action-cnt').html(checkCount + ' sélectionnés');
+        } else {
+            $('.column-title').show();
+            $('.bulk-actions').hide();
+        }
+    }
 });
 // /iCheck
 
-// Table
-$('table input').on('ifChecked', function () {
-    checkState = '';
-    $(this).parent().parent().parent().addClass('selected');
-    countChecked();
-});
-$('table input').on('ifUnchecked', function () {
-    checkState = '';
-    $(this).parent().parent().parent().removeClass('selected');
-    countChecked();
-});
 
-var checkState = '';
-
-$('.bulk_action input').on('ifChecked', function () {
-    checkState = '';
-    $(this).parent().parent().parent().addClass('selected');
-    countChecked();
-});
-$('.bulk_action input').on('ifUnchecked', function () {
-    checkState = '';
-    $(this).parent().parent().parent().removeClass('selected');
-    countChecked();
-});
-$('.bulk_action input#check-all').on('ifChecked', function () {
-    checkState = 'all';
-    countChecked();
-});
-$('.bulk_action input#check-all').on('ifUnchecked', function () {
-    checkState = 'none';
-    countChecked();
-});
-
-function countChecked() {
-    if (checkState === 'all') {
-        $(".bulk_action input[name='table_records']").iCheck('check');
-    }
-    if (checkState === 'none') {
-        $(".bulk_action input[name='table_records']").iCheck('uncheck');
-    }
-
-    var checkCount = $(".bulk_action input[name='table_records']:checked").length;
-
-    if (checkCount) {
-        $('.column-title').hide();
-        $('.bulk-actions').show();
-        $('.action-cnt').html(checkCount + ' Records Selected');
-    } else {
-        $('.column-title').show();
-        $('.bulk-actions').hide();
-    }
-}
 
 // Accordion
 $(document).ready(function () {
@@ -2521,11 +2525,26 @@ function init_DataTables() {
             }
         };
     }();
-
-    $('#datatable').dataTable({
+    var datatableInit = $('#datatable');
+    datatableInit.dataTable({
         'pageLength' : 5,
         "lengthMenu": [5, 10, 25, 50],
-        "order": [[ 0, "desc" ]]
+        "order": [[ 0, "desc" ]],
+        "language": {
+          "sLengthMenu": "Afficher _MENU_ Entrées",
+          "info": "Affichage de _START_ à _END_ sur _TOTAL_ Entrées",
+          "paginate": {
+              "previous": "Avant",
+              "next": "Après",
+            },
+            "sSearch": "Rechercher: "
+        },
+
+    });
+    datatableInit.on('draw.dt', function () {
+        $('input.flat').iCheck({
+            checkboxClass: 'icheckbox_flat-green'
+        });
     });
 
     $('#datatable-keytable').DataTable({
@@ -5073,7 +5092,10 @@ $(document).ready(function () {
     init_CustomNotification();
     init_autosize();
     init_autocomplete();
-    
+    //Show/hide add form
+    jQuery(document).on('click', '.add-new-button', function(){
+        jQuery('.add-form').slideToggle();              
+    });
     function showImage(src,target) {
         var fr=new FileReader();
         // when image is loaded, set the src of the image where you want to display it
@@ -5103,7 +5125,7 @@ $(document).ready(function () {
                     }
                 }).done(function (response) {                    
                     self.setContent(response);
-                    self.setTitle('View Profile');
+                    self.setTitle('Profil');
                 });
             }
         });        
@@ -5112,11 +5134,11 @@ $(document).ready(function () {
     jQuery(document).on('click', '.delete-user', function(){
         var user_id = jQuery(this).data('id');
         $.confirm({
-            title: 'Delete user?',
+            title: 'Supprimer utilisateur?',
             content: 'Are you sure ?',
             buttons: {
                 deleteUser: {
-                    text: 'Delete user',
+                    text: 'Supprimer utilisateur',
                     action: function () {
                         jQuery.ajax({
                             type: "POST",
@@ -5133,7 +5155,7 @@ $(document).ready(function () {
                         })
                     }
                 },
-                cancelAction: function () {
+                Annuler: function () {
 
                 }
             }
@@ -5158,6 +5180,67 @@ $(document).ready(function () {
             }
         }) 
     });
+    //Activate/Deactivate user profile ajax request
+    jQuery(document).on('change', '.activate-user', function(){
+        var activate = 'deactivate';
+
+        if($(this).is(":checked")) {
+            activate = 'activate';
+        }
+        var user_id = jQuery(this).data('id');
+        jQuery.ajax({
+            type: "POST",
+            url: BASE_URL + "activateuserprofile",
+            data: {
+                id : user_id,
+                activate: activate
+            },
+            success: function(response){
+                
+            }
+        }) 
+    });
+    //Activate/Deactivate property ajax request
+    jQuery(document).on('change', '.activate-property', function(){
+        var activate = 'deactivated';
+
+        if($(this).is(":checked")) {
+            activate = 'activated';
+        }
+        var user_id = jQuery(this).data('id');
+        jQuery.ajax({
+            type: "POST",
+            url: BASE_URL + "activateProperty",
+            data: {
+                id : user_id,
+                activate: activate
+            },
+            success: function(response){
+                
+            }
+        }) 
+    });
+
+//Approve all properties  ajax request
+    jQuery(document).on('ifChanged', '.approve_properties', function(){
+        var status = 0;
+        if($(this).is(":checked")) {
+            status = 1;
+        }
+        var prop_id = jQuery(this).data('id');
+        jQuery.ajax({
+            type: "POST",
+            url: BASE_URL + "approveproperties",
+            data: {
+                id : prop_id,
+                approve: status
+            },
+            success: function(response){
+                
+            }
+        }) 
+    });
+
     //view property ajax request
     jQuery(document).on('click', '.view-property', function(){
         var propertyID = jQuery(this).data('id');
@@ -5172,7 +5255,7 @@ $(document).ready(function () {
                     }
                 }).done(function (response) {                    
                     self.setContent(response);
-                    self.setTitle('View Property');
+                    self.setTitle('Afficher biens');
                 });
             }
         });        
@@ -5181,20 +5264,59 @@ $(document).ready(function () {
     jQuery(document).on('click', '.delete-property', function(){
         var propertyID = jQuery(this).data('id');
         $.confirm({
-            title: 'Delete property?',
+            title: 'Supprimer biens?',
             content: 'Are you sure ?',
             buttons: {
                 deleteUser: {
-                    text: 'Delete property',
+                    text: 'Supprimer biens',
                     action: function () {
                         jQuery.ajax({
                             type: "POST",
                             url: BASE_URL + "deleteproperty",
                             data: {
-                                id : propertyID
+                                id : propertyID,
+                                bulk: false
                             },
                             beforeSend: function(){
                                 $(this).parents('tr').css('opacity', 0.5);
+                            },
+                            success: function(){
+                                window.location.reload();
+                            }
+                        })
+                    }
+                },
+                Annuler: function () {
+
+                }
+            }
+        });              
+    });
+    //Delete property ajax request
+    jQuery(document).on('click', '.bulk-delete-properties', function(){
+        var propertyIDs = [];
+        jQuery(this).data('id');
+        jQuery('.bulk_action tbody tr.selected').each(function(){
+            propertyIDs.push(jQuery(this).find('input[type="checkbox"]').data('id'));
+        });
+       
+        propertyIDs = propertyIDs.join(',');
+        $.confirm({
+            title: 'Supprimer biens?',
+            content: 'Are you sure ?',
+            buttons: {
+                deleteUser: {
+                    text: 'Supprimer',
+                    action: function () {
+                        jQuery.ajax({
+                            type: "POST",
+                            url: BASE_URL + "deleteproperty",
+                            data: {
+                                ids : propertyIDs,
+                                bulk: true
+                            },
+                            beforeSend: function(){
+                                $('.bulk_action').css('opacity', 0.5);
                             },
                             success: function(){
                                 window.location.reload();
@@ -5206,8 +5328,90 @@ $(document).ready(function () {
 
                 }
             }
-        });              
+        });            
     });
+    //update type ajax request
+    jQuery(document).on('click', '.update-type', function(){
+        var typeID = jQuery(this).data('id');
+        jQuery.ajax({
+            type: "POST",
+            url: BASE_URL + "updatetype",
+            data: {
+                id : typeID,
+                name: jQuery(this).parents('tr').find('input[type="text"]').val()
+            },
+            beforeSend: function(){
+                $(this).parents('tr').css('opacity', 0.5);
+            },
+            success: function(response){
+                window.location.href = response;
+            }
+        })              
+    });
+    //update amenity ajax request
+    jQuery(document).on('click', '.update-amenity', function(){
+        var amenityID = jQuery(this).data('id');
+        jQuery.ajax({
+            type: "POST",
+            url: BASE_URL + "updateamenity",
+            data: {
+                id : amenityID,
+                name: jQuery(this).parents('tr').find('input[type="text"]').val()
+            },
+            beforeSend: function(){
+                $(this).parents('tr').css('opacity', 0.5);
+            },
+            success: function(response){
+                window.location.href = response;
+            }
+        })              
+    });
+    jQuery('#user-profile-form').on('submit', function(e) {
+        e.preventDefault();
+        var formData = new FormData();
+        
+        formData.append('profile_image', jQuery('#profile_image')[0].files[0]);
+        formData.append('role', jQuery('#role').val());
+        formData.append('name', jQuery('#name').val());
+        formData.append('email', jQuery('#email').val());
+        formData.append('phone', jQuery('#phone').val());
+        formData.append('id', jQuery('#user_id').val());
+        jQuery.ajax({
+            type: "POST",
+            url: "http://3.138.245.146/api/user/updateadminprofile",
+            data: formData,
+            processData: false,
+            contentType: false,
+            beforeSend: function(){
+                jQuery('#user-profile-form').find('p.loading').show();
+            },
+            success: function(response){
+               
+                jQuery.ajax({
+                    type: "POST",
+                    url: BASE_URL + "updateUserSession",
+                    data: {
+                        email: jQuery('#email').val()
+                    },
+                    success: function(response){
+                        jQuery('#user-profile-form').find('p.loading').hide();
+                        window.location.href = response;
+                    }
+                });
+            }
+        });           
+    });
+    jQuery(document).on('click', '.edit-row', function(){
+        console.log(1)
+        jQuery(this).parents('tr').find('.edit-box').show();
+        jQuery(this).parents('tr').find('p.name').hide();
+                    
+    });
+    jQuery(document).on('click', '.cancel-edit', function(){
+        jQuery(this).parents('tr').find('.edit-box').hide();
+        jQuery(this).parents('tr').find('p.name').show();           
+    });
+
     loadNotifications();
     //get notifications
     setInterval(function(){

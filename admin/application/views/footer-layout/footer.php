@@ -1,8 +1,8 @@
 <!-- footer content -->
 <footer>
-    <div class="pull-right">
+    <!--<div class="pull-right">
     ©2020 All Rights Reserved.
-    </div>
+    </div>-->
     <div class="clearfix"></div>
 </footer>
 <!-- /footer content -->
@@ -57,6 +57,9 @@
 <script src="<?php echo base_url('assets/vendors/datatables.net-responsive/js/dataTables.responsive.min.js'); ?>"></script>
 <script src="<?php echo base_url('assets/vendors/datatables.net-responsive-bs/js/responsive.bootstrap.js'); ?>"></script>
 <script src="<?php echo base_url('assets/vendors/datatables.net-scroller/js/dataTables.scroller.min.js'); ?>"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.colVis.min.js"></script>
+
 <script src="<?php echo base_url('assets/vendors/jszip/dist/jszip.min.js'); ?>"></script>
 <script src="<?php echo base_url('assets/vendors/pdfmake/build/pdfmake.min.js'); ?>"></script>
 <script src="<?php echo base_url('assets/vendors/pdfmake/build/vfs_fonts.js'); ?>"></script>

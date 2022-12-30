@@ -83,3 +83,73 @@ defined('EXIT_USER_INPUT')     OR define('EXIT_USER_INPUT', 7); // invalid user 
 defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
+
+
+define('UPLOADS_URL', "http://3.138.245.146/api/uploads/");
+define('AWS_PROPERTIES_URL','https://yedimmobiler.s3.us-east-2.amazonaws.com/properties/');										
+define('AWS_PROFILES_URL','https://yedimmobiler.s3.us-east-2.amazonaws.com/profiles/');	
+
+define('ADD_NEW', 'Ajouter de nouveaux');
+define('ADD_TYPE', 'Ajouter Type');
+define('ADD_AMENITY', 'Ajouter Commodités');
+define('WELCOME', 'Bienvenue');
+define('USERS', 'Utilisateurs');
+define('PROPERTIES', 'Biens immobiliers');
+define('TOTAL_USERS', 'Nombre de Utilisateurs');
+define('TOTAL_PROPERTIES', 'Nombre de biens');
+define('ALL_USERS', 'Tous les utilisateurs');
+define('ADD_NEW_USER', 'Ajouter de nouveaux utilisateurs');
+define('ALL_PROPERTIES', 'Tous les biens');
+define('PROFILE', 'Profil');
+define('VIEW_PROFILE', 'Afficher le Profil');
+define('LOG_OUT', 'Se déconnecter');
+define('CLOSE', 'Fermer');
+define('NAME', 'Nom');
+define('PHONE', 'Téléphone');
+define('APPROVE_USER', 'Approuver');
+define('PREVIOUS', 'Avant');
+define('NEXT', 'Après');
+define('SHOW', 'Afficher');
+define('ENTRIES', 'Insertions');
+define('PROFILE_IMAGE', 'Photo de Profil');
+define('FULL_NAME', 'Nom Complet');
+define('EMAIL_ADDRESS', 'E-mail');
+define('PASSWORD', 'Mot de Passe');
+define('ADD_USER', 'Ajouter Utilisateur');
+define('LIST_OF_ALL_PROPERTIES', 'Liste de tous les biens');
+define('LIST_OF_ALL_AMENITIES', 'Liste de tous les Commodités');
+define('LIST_OF_ALL_TYPES', 'Liste de tous les Types');
+define('TITLE', 'Titre');
+define('PRICE', 'Prix');
+define('AREA', 'Superficie');
+define('LISTED_BY', 'Auteur');
+define('CREATED_AT', 'Date/Heure');
+define('SETTINGS', 'Réglages');
+define('FULL_SCREEN', 'Plein Écran');
+define('LOCK', 'Verrouiller');
+define('SEE_ALL_ALERTS', 'Voir toutes les notifications');
+define('NEW_USER_NOTIFICATION', 'Un nouvel utilisateur a été ajouté');
+define('LOGIN', 'Se connecter');
+define('AMENITIES', 'Commodités');
+define('VIEW', 'Afficher');
+define('DEL', 'Supprimer');
+define('PURPOSE', 'Destination');
+define('SEARCH', 'Rechercher');
+define('EDIT', 'Modifier');
+define('INSERTIONS', 'Entrées');
+define('CONTACT_DETAILS', 'Coordonnées de YED Immobilier');
+define('UPD', 'Mettre à jour');
+define('UPDATE_PROFILE', 'Mettre à jour le profil');
+define('MY_PROFILE_DATA', 'Mes coordonnées');
+define('MY_PROFILE', 'Mon Profil');
+define('BULK_ACTION', 'Action en masse');
+define('SELECTED', 'sélectionnés');
+define('DELETE_SELECTED', 'Supprimer sélectionnée');
+define('ALL_INDIVIDUALS', 'Tous les particuliers');
+define('ALL_AGENTS', 'Tous les professionnels');
+define('LIST_OF_ALL_INDIVIDUALS', 'Liste de toutes les particuliers');
+define('LIST_OF_ALL_AGENTS', 'Liste de toutes les professionnels');
+define('TOTAL_INDIVIDUALS', 'Nombre de particuliers');
+define('TOTAL_AGENTS', 'Nombre de professionnels');
+
+

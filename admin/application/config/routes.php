@@ -53,17 +53,34 @@ $route['default_controller'] = 'AdminController';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['users'] = 'AdminController/allUsers';
+$route['individuals'] = 'AdminController/allIndividuals';
+$route['agents'] = 'AdminController/allAgents';
 $route['add-user'] = 'AdminController/addUser';
 $route['login'] = 'AdminController/login';
 $route['logout'] = 'AdminController/logout';
 $route['getuserprofile']['POST'] = 'AdminController/getUser';
 $route['deleteuserprofile']['POST'] = 'AdminController/deleteUser';
 $route['approveuserprofile']['POST'] = 'AdminController/approveUser';
+$route['activateuserprofile']['POST'] = 'AdminController/activateUserToggle';
+$route['approveproperties']['POST'] = 'AdminController/approveProperties';
+$route['profile'] = 'AdminController/profile';
+$route['properties/amenities'] = 'AdminController/amenities';
+$route['properties/types'] = 'AdminController/types';
+$route['addAmenities'] = 'AdminController/addAmenities';
+$route['addType'] = 'AdminController/addType';
+$route['deletetype/(:num)'] = 'AdminController/deletetype/$1';
+$route['deleteamenity/(:num)'] = 'AdminController/deleteamenity/$1';
+$route['deleteamenity/(:num)'] = 'AdminController/deleteamenity/$1';
+$route['updatetype'] = 'AdminController/updatetype';
+$route['updateamenity'] = 'AdminController/updateamenity';
+$route['contactinfo'] = 'AdminController/contactinfo';
+$route['updateUserSession'] = 'AdminController/updateUserSession';
+
 
 $route['properties'] = 'AdminController/allProperties';
 $route['getproperty']['POST'] = 'AdminController/getProperty';
 $route['deleteproperty']['POST'] = 'AdminController/deleteProperty';
+$route['activateProperty'] = 'AdminController/activatePropertyToggle';
 
 $route['getnotifications']['GET'] = 'AdminController/getNotifications';
 $route['notifications'] = 'AdminController/allNotifications';

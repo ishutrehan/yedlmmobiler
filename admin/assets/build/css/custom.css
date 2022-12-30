@@ -4992,3 +4992,11 @@ table.all-users-table .fa-eye {
   background-color: #212529 !important;
   color: #fff;
 }
+
+.dt-button.buttons-collection{
+  border: 1px solid #cfcfcf;
+    padding: 10px;
+}
+table.bulk_action tbody tr.selected{
+  background: rgba(38,185,154,0.16);
+}

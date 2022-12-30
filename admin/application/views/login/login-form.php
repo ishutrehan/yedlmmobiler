@@ -7,8 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentelella Alela! | </title>
-
+    <title>Immobilier | Votre partenaire de confiance </title>
+    <link rel="icon" type="image/png" sizes="96x96" href="<?php echo base_url('assets/images/favicon-96x96.png'); ?>">
     <!-- Bootstrap -->
     <link href="<?php echo base_url('assets/vendors/bootstrap/dist/css/bootstrap.min.css') ?>" rel="stylesheet">
     <!-- Font Awesome -->
@@ -36,13 +36,13 @@
                 <form method="post" id="login-form" action="<?php echo base_url('login'); ?>">
                 <h1>Login</h1>
                 <div>
-                    <input type="email" class="form-control" placeholder="Email Addrress" name="email" required="" />
+                    <input type="email" class="form-control" placeholder="<?php echo EMAIL_ADDRESS; ?>" name="email" required="" />
                 </div>
                 <div>
-                    <input type="password" class="form-control" placeholder="Password" name="password" required="" />
+                    <input type="password" class="form-control" placeholder="<?php echo PASSWORD; ?>" name="password" required="" />
                 </div>
                 <div>
-                    <button type="submit" name="login-form" class="btn btn-primary submit">Log in</a>
+                    <button type="submit" name="login-form" class="btn btn-primary submit"><?php echo LOGIN; ?></a>
                 </div>
 
                 <div class="clearfix"></div>
@@ -51,7 +51,7 @@
                     <div class="clearfix"></div>
                     <br />
                     <div>
-                    <img src="<?php echo base_url('assets/images/logo-black.png'); ?>" alt="Logo" width="50%">
+                    <img src="<?php echo base_url('assets/images/logo-new.png'); ?>" alt="Logo" width="50%">
                     <br />
                     <p style="margin-top:15px;">©2020 All Rights Reserved.</p>
                     </div>

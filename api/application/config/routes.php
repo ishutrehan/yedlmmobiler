@@ -55,8 +55,34 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['/user/register']['POST'] = 'User/register';
 $route['/user/login']['POST'] = 'User/login';
-$route['/user/update/(:num)']['POST'] = 'User/update';
-$route['/user/update/password/(:num)']['POST'] = 'User/changepassword';
+$route['/user/update/']['POST'] = 'User/update';
+$route['/user/refresh']['POST'] = 'User/refresh';
+$route['/user/passwordReset']['POST'] = 'User/passwordReset';
+$route['/user/resetpassword/(:any)'] = 'User/resetpassword';
+$route['/user/getprofile'] = 'User/getprofile';
+$route['/user/status'] = 'User/status';
+$route['/user/contact'] = 'User/contact';
+$route['/user/confirmaccount/(:any)'] = 'User/confirmaccount';
+$route['/user/addresses'] = 'User/addresses';
+$route['/user/properties'] = 'User/properties';
+$route['/user/togglefav'] = 'User/togglefav';
+$route['/user/fav'] = 'User/fav';
+$route['/user/updateadminprofile'] = 'User/updateadminprofile';
+$route['/user/enquiry'] = 'User/enquiry';
+$route['/user/checkphone'] = 'User/checkphone';
+
 $route['/property/add']['POST'] = 'Property/add';
 $route['/property/search']['POST'] = 'Property/search';
+
+$route['/property/types'] = 'Property/types';
+$route['/property/amenities'] = 'Property/amenities';
+$route['/property/rentaltypes'] = 'Property/rentaltypes';
+$route['/property/viewcount'] = 'Property/viewcount';
+
+
+$route['/property/insertfromwp'] = 'Property/insertfromwp';
+$route['/property/updatefromwp'] = 'Property/updatefromwp';
+$route['/property/deletefromwp'] = 'Property/deletefromwp';
+$route['/property/getproperty'] = 'Property/getproperty';
+
 
